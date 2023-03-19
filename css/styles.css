@@ -1,0 +1,61 @@
+body {
+    
+    height: 100vh;
+    width: 100vw;
+
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#buttonmainpage {
+
+    height: 30vh;
+    width: 30vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 0.5em solid black;
+    color: black;
+    background-color: aquamarine;
+} 
+
+#chartcasillas {
+     height: 90vh;
+     width: 45vw;
+    
+    display: flex;
+    justify-content: baseline;
+    align-items: baseline;
+
+    flex-direction: column;
+}
+
+.rowscasillas {
+    height: 30vh;
+    width: 45vw;
+
+    display: flex;
+    justify-content: baseline;
+    align-items: baseline;
+
+    flex-direction:row;
+}
+
+.casilla {
+    height: 30vh;
+    width: 15vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 0.5em solid black;
+    color: black;
+    background-color: cadetblue;
+}
