@@ -73,8 +73,6 @@ console.log("Es el turno de X");
 arrCasillas.map((casillaEscogida) => {
     casillaEscogida.addEventListener("click", () => {
 
-      Comprobarganador (ArrTablero);
-
     if ((casillaEscogida.innerHTML != "X") && (casillaEscogida.innerHTML != "O")) {
     console.log(casillaEscogida.innerHTML);
     numeroClicks ++;
@@ -97,6 +95,7 @@ arrCasillas.map((casillaEscogida) => {
       casillaEscogida.innerHTML = "O";
       //lógico qué casillas están marcadas por el jugador X
       console.log(ArrTablero);
+      Comprobarganador (ArrTablero);
     } else {
       console.log("Es el turno de O");
       turnosX ++;
@@ -105,6 +104,7 @@ arrCasillas.map((casillaEscogida) => {
       ArrTablero[casillaEscogida.innerHTML] = "X";
       casillaEscogida.innerHTML = "X";
       console.log(ArrTablero);
+      Comprobarganador (ArrTablero);
     }
      } else {};
 
