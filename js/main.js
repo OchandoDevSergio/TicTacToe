@@ -67,14 +67,15 @@ const Comprobarganador = (ArrTablero) => {
 
 
 
-
-
 console.log("Es el turno de X");
 arrCasillas.map((casillaEscogida) => {
     casillaEscogida.addEventListener("click", () => {
 
+      if (turnosO < 3) {
+
     if ((casillaEscogida.innerHTML != "X") && (casillaEscogida.innerHTML != "O")) {
-    console.log(casillaEscogida.innerHTML);
+    // console.log(casillaEscogida.innerHTML); Esto indicaba la casilla que se había pinchado
+    //antes de cambiar su númeor por un espacio.
     numeroClicks ++;
     // console.log("a ver los clicks", numeroClicks)
 
@@ -107,6 +108,10 @@ arrCasillas.map((casillaEscogida) => {
       Comprobarganador (ArrTablero);
     }
      } else {};
+
+
+
+    } else { console.log("La partida ya ha finalizado.");}
 
 
       });
