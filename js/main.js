@@ -14,11 +14,15 @@ const Comprobarganador = (ArrTablero) => {
   if (((ArrTablero[0]=="X")&&(ArrTablero[1]=="X")&&(ArrTablero[2]=="X"))||((ArrTablero[3]=="X")&&(ArrTablero[4]=="X")&&(ArrTablero[5]=="X"))||((ArrTablero[6]=="X")&&(ArrTablero[7]=="X")&&(ArrTablero[8]=="X"))||((ArrTablero[0]=="X")&&(ArrTablero[4]=="X")&&(ArrTablero[8]=="X"))||((ArrTablero[2]=="X")&&(ArrTablero[4]=="X")&&(ArrTablero[6]=="X"))||((ArrTablero[0]=="X")&&(ArrTablero[3]=="X")&&(ArrTablero[6]=="X"))||((ArrTablero[1]=="X")&&(ArrTablero[4]=="X")&&(ArrTablero[7]=="X"))||((ArrTablero[2]=="X")&&(ArrTablero[5]=="X")&&(ArrTablero[8]=="X"))) {
     document.getElementById("asignaganador").innerHTML = "El jugador X ha ganado.";//indica que el jugador X ha ganado
     console.log("El jugador X ha ganado");
+    sessionStorage.setItem("ganador", "Ha ganado el jugador X");
+    window.open("../winner.html", "_self");
     document.getElementById("asignaturnos").innerHTML = "Fin del juego";
     finJuego = 1;
   } else if (((ArrTablero[0]=="O")&&(ArrTablero[1]=="O")&&(ArrTablero[2]=="O"))||((ArrTablero[3]=="O")&&(ArrTablero[4]=="O")&&(ArrTablero[5]=="O"))||((ArrTablero[6]=="O")&&(ArrTablero[7]=="O")&&(ArrTablero[8]=="O"))||((ArrTablero[0]=="O")&&(ArrTablero[4]=="O")&&(ArrTablero[8]=="O"))||((ArrTablero[2]=="O")&&(ArrTablero[4]=="O")&&(ArrTablero[6]=="O"))||((ArrTablero[0]=="O")&&(ArrTablero[3]=="O")&&(ArrTablero[6]=="O"))||((ArrTablero[1]=="O")&&(ArrTablero[4]=="O")&&(ArrTablero[7]=="O"))||((ArrTablero[2]=="O")&&(ArrTablero[5]=="O")&&(ArrTablero[8]=="O"))) {
     document.getElementById("asignaganador").innerHTML = "El jugador O ha ganado.";
     console.log("EL jugador O ha ganado");
+    sessionStorage.setItem("ganador", "Ha ganado el jugador O");
+    window.open("../winner.html", "_self");
     document.getElementById("asignaturnos").innerHTML = "Fin del juego";
     finJuego = 1;
   } else {
@@ -65,6 +69,8 @@ arrCasillas.map((casillaEscogida) => {
       finJuego=1;
       document.getElementById("asignaturnos").innerHTML = "Fin del juego";
       document.getElementById("asignaganador").innerHTML = "La partida ha finalizado sin un ganador.";
+      sessionStorage.setItem("ganador", "La partida ha finalizado sin un ganador.");
+      window.open("../winner.html", "_self");
       }
 
 
