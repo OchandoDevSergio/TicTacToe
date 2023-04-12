@@ -9,12 +9,11 @@ playerX.addEventListener("input", (e)=> {
 
 
 playerO.addEventListener("input", (e)=> {
-playerO=e.target.value;
+playerO= e.target.value;
 });
 
 link.addEventListener("click", ()=>{
     sessionStorage.setItem("playerX", JSON.stringify(playerX));
     sessionStorage.setItem("playerO", JSON.stringify(playerO));
-
 })
 
