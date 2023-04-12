@@ -1,4 +1,4 @@
 
-let contenedor = document.getElementById("resultado");
+let resultado = document.getElementById("resultado");
 
 resultado.innerHTML = `${sessionStorage.getItem("ganador")}`;

@@ -4,19 +4,17 @@ let playerO = document.getElementById("playerO");
 let link = document.getElementById("buttongame");
 
 playerX.addEventListener("input", (e)=> {
-
-    console.log(`playerX ${e.target.value}`)
-    // console.log(e);
+    playerX= e.target.value;
 });
+
 
 playerO.addEventListener("input", (e)=> {
-
-    console.log(`playerO ${e.target.value}`)
-    // console.log(e);
+playerO=e.target.value;
 });
 
-link.addEventListener("click", ()=> {
-    sessionStorage.setItem("playerX", playerX);
-    sessionStorage.setItem("playerO", playerO);
+link.addEventListener("click", ()=>{
+    sessionStorage.setItem("playerX", JSON.stringify(playerX));
+    sessionStorage.setItem("playerO", JSON.stringify(playerO));
 
 })
+

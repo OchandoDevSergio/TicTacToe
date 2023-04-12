@@ -14,7 +14,7 @@ const Comprobarganador = (ArrTablero) => {
   if (((ArrTablero[0]=="X")&&(ArrTablero[1]=="X")&&(ArrTablero[2]=="X"))||((ArrTablero[3]=="X")&&(ArrTablero[4]=="X")&&(ArrTablero[5]=="X"))||((ArrTablero[6]=="X")&&(ArrTablero[7]=="X")&&(ArrTablero[8]=="X"))||((ArrTablero[0]=="X")&&(ArrTablero[4]=="X")&&(ArrTablero[8]=="X"))||((ArrTablero[2]=="X")&&(ArrTablero[4]=="X")&&(ArrTablero[6]=="X"))||((ArrTablero[0]=="X")&&(ArrTablero[3]=="X")&&(ArrTablero[6]=="X"))||((ArrTablero[1]=="X")&&(ArrTablero[4]=="X")&&(ArrTablero[7]=="X"))||((ArrTablero[2]=="X")&&(ArrTablero[5]=="X")&&(ArrTablero[8]=="X"))) {
     document.getElementById("asignaganador").innerHTML = "El jugador X ha ganado.";//indica que el jugador X ha ganado
     console.log("El jugador X ha ganado");
-    sessionStorage.setItem("ganador", `Ha ganado el jugador ${sessionStorage.getItem("playerX")}`);
+    sessionStorage.setItem("ganador", `Ha ganado el jugador ${JSON.parse(sessionStorage.getItem("playerX"))}`);
     window.open("../winner.html", "_self");
     document.getElementById("asignaturnos").innerHTML = "Fin del juego";
     finJuego = 1;
