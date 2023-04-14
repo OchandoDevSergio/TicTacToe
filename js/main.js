@@ -1,3 +1,5 @@
+
+
 let conjuntoCasillas = document.getElementsByClassName("casilla");
 let arrCasillas = Array.from(conjuntoCasillas);
 let numeroClicks = 0;
@@ -21,6 +23,8 @@ document.getElementById("asignaturnos").innerHTML = `Es el turno de ${JSON.parse
 document.getElementById("turnosX").innerHTML = `Turnos de  ${JSON.parse(sessionStorage.getItem("playerX"))} transcurridos: ${turnosX}`;
 document.getElementById("turnosO").innerHTML = `Turnos de  ${JSON.parse(sessionStorage.getItem("playerO"))} transcurridos: ${turnosO}`;
 
+
+// SISTEMA PARA COMPROBAR SI YA HAY UN GANADOR BUSCANDO QUE SE HAYA DADO ALGUNA DE LAS JUGADAS GANADORAS DEL ARRAY
 const Comprobarganador = (/*ArrTablero*/) => {
 
   jugadasGanadoras.map(victoria => {
@@ -31,7 +35,7 @@ const Comprobarganador = (/*ArrTablero*/) => {
     } else if ((ArrTablero[casilla1] === ArrTablero[casilla2]) && (ArrTablero[casilla1] === ArrTablero[casilla3]) && (ArrTablero[casilla1] =="O")) {
           sessionStorage.setItem("ganador", `Ha ganado ${JSON.parse(sessionStorage.getItem("playerO"))}`);
           window.open("../winner.html", "_self");
-          finJuego = 1;//sirve para que no finalice directamente la partida tras el tercer turno de O sin asignar el correspondiente ganador
+          finJuego = 1;//sirve para que no finalice directamente la partida tras el tercer turno de O sin asignar el correspondiente ganador  
     } else {
           document.getElementById("asignaganador").innerHTML = "La partida continúa.";
     }
@@ -39,7 +43,7 @@ const Comprobarganador = (/*ArrTablero*/) => {
   })
 
   //SISTEMA ALTERNATIVO PARA DETERMINAR EL GANADOR QUE CONSUMIRIA MAS RECURSOS
-  
+
   // if (((ArrTablero[0]=="X")&&(ArrTablero[1]=="X")&&(ArrTablero[2]=="X"))||((ArrTablero[3]=="X")&&(ArrTablero[4]=="X")&&(ArrTablero[5]=="X"))||((ArrTablero[6]=="X")&&(ArrTablero[7]=="X")&&(ArrTablero[8]=="X"))||((ArrTablero[0]=="X")&&(ArrTablero[4]=="X")&&(ArrTablero[8]=="X"))||((ArrTablero[2]=="X")&&(ArrTablero[4]=="X")&&(ArrTablero[6]=="X"))||((ArrTablero[0]=="X")&&(ArrTablero[3]=="X")&&(ArrTablero[6]=="X"))||((ArrTablero[1]=="X")&&(ArrTablero[4]=="X")&&(ArrTablero[7]=="X"))||((ArrTablero[2]=="X")&&(ArrTablero[5]=="X")&&(ArrTablero[8]=="X"))) {
   //   sessionStorage.setItem("ganador", `Ha ganado ${JSON.parse(sessionStorage.getItem("playerX"))}`);
   //   window.open("../winner.html", "_self");
@@ -47,7 +51,7 @@ const Comprobarganador = (/*ArrTablero*/) => {
   // } else if (((ArrTablero[0]=="O")&&(ArrTablero[1]=="O")&&(ArrTablero[2]=="O"))||((ArrTablero[3]=="O")&&(ArrTablero[4]=="O")&&(ArrTablero[5]=="O"))||((ArrTablero[6]=="O")&&(ArrTablero[7]=="O")&&(ArrTablero[8]=="O"))||((ArrTablero[0]=="O")&&(ArrTablero[4]=="O")&&(ArrTablero[8]=="O"))||((ArrTablero[2]=="O")&&(ArrTablero[4]=="O")&&(ArrTablero[6]=="O"))||((ArrTablero[0]=="O")&&(ArrTablero[3]=="O")&&(ArrTablero[6]=="O"))||((ArrTablero[1]=="O")&&(ArrTablero[4]=="O")&&(ArrTablero[7]=="O"))||((ArrTablero[2]=="O")&&(ArrTablero[5]=="O")&&(ArrTablero[8]=="O"))) {
   //   sessionStorage.setItem("ganador", `Ha ganado ${JSON.parse(sessionStorage.getItem("playerO"))}`);
   //   window.open("../winner.html", "_self");
-  //   finJuego = 1;sirve para que no finalice directamente la partida tras el tercer turno de O sin asignar el correspondiente ganador
+  //   finJuego = 1;
   // } else {
   //   document.getElementById("asignaganador").innerHTML = "La partida continúa.";
 
@@ -55,7 +59,7 @@ const Comprobarganador = (/*ArrTablero*/) => {
 
 }
 
-
+//CAMBIOS QUE SE HAN DE DAR CADA VEZ QUE UN JUGADOR MARCA UNA CASILLA
 arrCasillas.map((casillaEscogida) => {
     casillaEscogida.addEventListener("click", () => {
 
