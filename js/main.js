@@ -5,34 +5,53 @@ let turnosX = 0;
 let turnosO = 0;
 let esTurnoO = true;
 let finJuego = 0;
-let ArrTablero = ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty"];
-// console.log(ArrTablero);
+let ArrTablero = ["", "", "", "", "", "", "", "", ""];
+let jugadasGanadoras = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6],
+];
 
 document.getElementById("asignaturnos").innerHTML = `Es el turno de ${JSON.parse(sessionStorage.getItem("playerX"))}`
 document.getElementById("turnosX").innerHTML = `Turnos de  ${JSON.parse(sessionStorage.getItem("playerX"))} transcurridos: ${turnosX}`;
 document.getElementById("turnosO").innerHTML = `Turnos de  ${JSON.parse(sessionStorage.getItem("playerO"))} transcurridos: ${turnosO}`;
 
-const Comprobarganador = (ArrTablero) => {
+const Comprobarganador = (/*ArrTablero*/) => {
 
-  if (((ArrTablero[0]=="X")&&(ArrTablero[1]=="X")&&(ArrTablero[2]=="X"))||((ArrTablero[3]=="X")&&(ArrTablero[4]=="X")&&(ArrTablero[5]=="X"))||((ArrTablero[6]=="X")&&(ArrTablero[7]=="X")&&(ArrTablero[8]=="X"))||((ArrTablero[0]=="X")&&(ArrTablero[4]=="X")&&(ArrTablero[8]=="X"))||((ArrTablero[2]=="X")&&(ArrTablero[4]=="X")&&(ArrTablero[6]=="X"))||((ArrTablero[0]=="X")&&(ArrTablero[3]=="X")&&(ArrTablero[6]=="X"))||((ArrTablero[1]=="X")&&(ArrTablero[4]=="X")&&(ArrTablero[7]=="X"))||((ArrTablero[2]=="X")&&(ArrTablero[5]=="X")&&(ArrTablero[8]=="X"))) {
-    // document.getElementById("asignaganador").innerHTML = "El jugador X ha ganado.";//indica que el jugador X ha ganado
-    // console.log("El jugador X ha ganado");
-    sessionStorage.setItem("ganador", `Ha ganado ${JSON.parse(sessionStorage.getItem("playerX"))}`);
-    window.open("../winner.html", "_self");
-    // document.getElementById("asignaturnos").innerHTML = "Fin del juego";
-    // finJuego = 1;
-  } else if (((ArrTablero[0]=="O")&&(ArrTablero[1]=="O")&&(ArrTablero[2]=="O"))||((ArrTablero[3]=="O")&&(ArrTablero[4]=="O")&&(ArrTablero[5]=="O"))||((ArrTablero[6]=="O")&&(ArrTablero[7]=="O")&&(ArrTablero[8]=="O"))||((ArrTablero[0]=="O")&&(ArrTablero[4]=="O")&&(ArrTablero[8]=="O"))||((ArrTablero[2]=="O")&&(ArrTablero[4]=="O")&&(ArrTablero[6]=="O"))||((ArrTablero[0]=="O")&&(ArrTablero[3]=="O")&&(ArrTablero[6]=="O"))||((ArrTablero[1]=="O")&&(ArrTablero[4]=="O")&&(ArrTablero[7]=="O"))||((ArrTablero[2]=="O")&&(ArrTablero[5]=="O")&&(ArrTablero[8]=="O"))) {
-    // document.getElementById("asignaganador").innerHTML = "El jugador O ha ganado.";
-    // console.log("EL jugador O ha ganado");
-    sessionStorage.setItem("ganador", `Ha ganado ${JSON.parse(sessionStorage.getItem("playerO"))}`);
-    window.open("../winner.html", "_self");
-    // document.getElementById("asignaturnos").innerHTML = "Fin del juego";
-    // finJuego = 1;
-  } else {
-    document.getElementById("asignaganador").innerHTML = "La partida continúa.";
-  }
+  jugadasGanadoras.map(victoria => {
+    let [casilla1, casilla2, casilla3] = victoria;
+    if ((ArrTablero[casilla1] === ArrTablero[casilla2]) && (ArrTablero[casilla1] === ArrTablero[casilla3]) && (ArrTablero[casilla1] =="X")) {
+          sessionStorage.setItem("ganador", `Ha ganado ${JSON.parse(sessionStorage.getItem("playerX"))}`);
+          window.open("../winner.html", "_self");
+    } else if ((ArrTablero[casilla1] === ArrTablero[casilla2]) && (ArrTablero[casilla1] === ArrTablero[casilla3]) && (ArrTablero[casilla1] =="O")) {
+          sessionStorage.setItem("ganador", `Ha ganado ${JSON.parse(sessionStorage.getItem("playerO"))}`);
+          window.open("../winner.html", "_self");
+          finJuego = 1;//sirve para que no finalice directamente la partida tras el tercer turno de O sin asignar el correspondiente ganador
+    } else {
+          document.getElementById("asignaganador").innerHTML = "La partida continúa.";
+    }
 
+  })
 
+  //SISTEMA ALTERNATIVO PARA DETERMINAR EL GANADOR QUE CONSUMIRIA MAS RECURSOS
+  
+  // if (((ArrTablero[0]=="X")&&(ArrTablero[1]=="X")&&(ArrTablero[2]=="X"))||((ArrTablero[3]=="X")&&(ArrTablero[4]=="X")&&(ArrTablero[5]=="X"))||((ArrTablero[6]=="X")&&(ArrTablero[7]=="X")&&(ArrTablero[8]=="X"))||((ArrTablero[0]=="X")&&(ArrTablero[4]=="X")&&(ArrTablero[8]=="X"))||((ArrTablero[2]=="X")&&(ArrTablero[4]=="X")&&(ArrTablero[6]=="X"))||((ArrTablero[0]=="X")&&(ArrTablero[3]=="X")&&(ArrTablero[6]=="X"))||((ArrTablero[1]=="X")&&(ArrTablero[4]=="X")&&(ArrTablero[7]=="X"))||((ArrTablero[2]=="X")&&(ArrTablero[5]=="X")&&(ArrTablero[8]=="X"))) {
+  //   sessionStorage.setItem("ganador", `Ha ganado ${JSON.parse(sessionStorage.getItem("playerX"))}`);
+  //   window.open("../winner.html", "_self");
+
+  // } else if (((ArrTablero[0]=="O")&&(ArrTablero[1]=="O")&&(ArrTablero[2]=="O"))||((ArrTablero[3]=="O")&&(ArrTablero[4]=="O")&&(ArrTablero[5]=="O"))||((ArrTablero[6]=="O")&&(ArrTablero[7]=="O")&&(ArrTablero[8]=="O"))||((ArrTablero[0]=="O")&&(ArrTablero[4]=="O")&&(ArrTablero[8]=="O"))||((ArrTablero[2]=="O")&&(ArrTablero[4]=="O")&&(ArrTablero[6]=="O"))||((ArrTablero[0]=="O")&&(ArrTablero[3]=="O")&&(ArrTablero[6]=="O"))||((ArrTablero[1]=="O")&&(ArrTablero[4]=="O")&&(ArrTablero[7]=="O"))||((ArrTablero[2]=="O")&&(ArrTablero[5]=="O")&&(ArrTablero[8]=="O"))) {
+  //   sessionStorage.setItem("ganador", `Ha ganado ${JSON.parse(sessionStorage.getItem("playerO"))}`);
+  //   window.open("../winner.html", "_self");
+  //   finJuego = 1;sirve para que no finalice directamente la partida tras el tercer turno de O sin asignar el correspondiente ganador
+  // } else {
+  //   document.getElementById("asignaganador").innerHTML = "La partida continúa.";
+
+  // }
 
 }
 
@@ -44,8 +63,7 @@ arrCasillas.map((casillaEscogida) => {
 
     if ((casillaEscogida.innerHTML != "X") && (casillaEscogida.innerHTML != "O")) {
       numeroClicks ++;
-      let esTurnoO = (numeroClicks%2 == 0)  //La variable esTurnoX será true si es el turno de X y
-      //false si es el turno de O
+      let esTurnoO = (numeroClicks%2 == 0)
         ? true
         : false;
 
@@ -75,11 +93,8 @@ arrCasillas.map((casillaEscogida) => {
       sessionStorage.setItem("ganador", "La partida ha finalizado sin un ganador.");
       window.open("../winner.html", "_self");
       }
-
-
     }
     
-
       });
   });
 
