@@ -11,20 +11,6 @@ body {
     align-items: center; */
 }
 
-#buttonmainpage {
-
-    height: 30vh;
-    width: 30vw;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    border: 0.5em solid black;
-    color: black;
-    background-color: aquamarine;
-} 
-
 #chartcasillas {
      height: 90vh;
      width: 45vw;
