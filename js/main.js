@@ -18,10 +18,21 @@ let jugadasGanadoras = [
   [2, 4, 6],
 ];
 
-document.getElementById("asignaturnos").innerHTML = `Es el turno de ${JSON.parse(sessionStorage.getItem("playerX"))}`
-document.getElementById("turnosX").innerHTML = `Turnos de  ${JSON.parse(sessionStorage.getItem("playerX"))} transcurridos: ${turnosX}`;
-document.getElementById("turnosO").innerHTML = `Turnos de  ${JSON.parse(sessionStorage.getItem("playerO"))} transcurridos: ${turnosO}`;
+let playerX = JSON.parse(sessionStorage.getItem("playerX"));
+// if (playerX = "Jugador1") {
+//   playerX = "Jugador1";
+// }
+let playerO = JSON.parse(sessionStorage.getItem("playerO"));
+// if (playerO = null) {
+//   playerO = "Jugador2";
+// }
 
+document.getElementById("asignaturnos").innerHTML = `Es el turno de ${playerX}`
+document.getElementById("turnosX").innerHTML = `Turnos de  ${playerX} transcurridos: ${turnosX}`;
+document.getElementById("turnosO").innerHTML = `Turnos de  ${playerO} transcurridos: ${turnosO}`;
+
+
+// console.log("PlayerX =", playerX);
 
 // SISTEMA PARA COMPROBAR SI YA HAY UN GANADOR BUSCANDO QUE SE HAYA DADO ALGUNA DE LAS JUGADAS GANADORAS DEL ARRAY
 const Comprobarganador = () => {
@@ -29,10 +40,10 @@ const Comprobarganador = () => {
   jugadasGanadoras.map(victoria => {
     let [casilla1, casilla2, casilla3] = victoria;
       if ((ArrTablero[casilla1] == "X") && (ArrTablero[casilla2] == "X") && (ArrTablero[casilla3] =="X")) {
-          sessionStorage.setItem("ganador", `Ha ganado ${JSON.parse(sessionStorage.getItem("playerX"))}`);
+          sessionStorage.setItem("ganador", `Ha ganado ${playerX}`);
           window.open("../winner.html", "_self");
     } else if ((ArrTablero[casilla1] == "O") && (ArrTablero[casilla2] == "O") && (ArrTablero[casilla3] =="O")) {
-          sessionStorage.setItem("ganador", `Ha ganado ${JSON.parse(sessionStorage.getItem("playerO"))}`);
+          sessionStorage.setItem("ganador", `Ha ganado ${playerO}`);
           window.open("../winner.html", "_self");
           finJuego = 1;//sirve para que no finalice directamente la partida tras el tercer turno de O sin asignar el correspondiente ganador  
         } else {
@@ -72,17 +83,17 @@ arrCasillas.map((casillaEscogida) => {
 
       if (esTurnoO == true) {  //Con este if acumulamos los turnos que han transcurrido de cada jugador
         //e indicamos por consola el turno actual
-        document.getElementById("asignaturnos").innerHTML = `Es el turno de ${JSON.parse(sessionStorage.getItem("playerX"))}`;//indica que es el turno de X
+        document.getElementById("asignaturnos").innerHTML = `Es el turno de ${playerX}`;//indica que es el turno de X
         turnosO ++;
-        document.getElementById("turnosO").innerHTML = `Turnos de  ${JSON.parse(sessionStorage.getItem("playerO"))} transcurridos: ${turnosO}`;//indica los turnos de O que ya han transcurrido
+        document.getElementById("turnosO").innerHTML = `Turnos de  ${playerO} transcurridos: ${turnosO}`;//indica los turnos de O que ya han transcurrido
         ArrTablero[casillaEscogida.id] = "O"; //gracias a esta línea indicamos en el tablero 
         casillaEscogida.innerHTML = "O";
         //lógico que casillas están marcadas por el jugador X
         Comprobarganador (ArrTablero);
       } else {
-        document.getElementById("asignaturnos").innerHTML = `Es el turno de ${JSON.parse(sessionStorage.getItem("playerO"))}`;
+        document.getElementById("asignaturnos").innerHTML = `Es el turno de ${playerO}`;
         turnosX ++;
-        document.getElementById("turnosX").innerHTML = `Turnos de  ${JSON.parse(sessionStorage.getItem("playerX"))} transcurridos: ${turnosX}`;
+        document.getElementById("turnosX").innerHTML = `Turnos de  ${playerX} transcurridos: ${turnosX}`;
         ArrTablero[casillaEscogida.id] = "X";
         casillaEscogida.innerHTML = "X";
         Comprobarganador (ArrTablero);

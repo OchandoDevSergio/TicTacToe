@@ -7,7 +7,6 @@ playerX.addEventListener("input", (e)=> {
     playerX= e.target.value;
 });
 
-
 playerO.addEventListener("input", (e)=> {
 playerO= e.target.value;
 });
