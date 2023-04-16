@@ -18,12 +18,15 @@ let jugadasGanadoras = [
   [2, 4, 6],
 ];
 
+
+
 let playerX = JSON.parse(sessionStorage.getItem("playerX"));
-// if (playerX = "Jugador1") {
+// if (playerX !== String) {
 //   playerX = "Jugador1";
 // }
+// console.log("a ver el player", playerX);
 let playerO = JSON.parse(sessionStorage.getItem("playerO"));
-// if (playerO = null) {
+// if (playerO == null) {
 //   playerO = "Jugador2";
 // }
 
@@ -87,7 +90,8 @@ arrCasillas.map((casillaEscogida) => {
         turnosO ++;
         document.getElementById("turnosO").innerHTML = `Turnos de  ${playerO} transcurridos: ${turnosO}`;//indica los turnos de O que ya han transcurrido
         ArrTablero[casillaEscogida.id] = "O"; //gracias a esta línea indicamos en el tablero 
-        casillaEscogida.innerHTML = "O";
+        casillaEscogida.classList.add("alien");
+        // casillaEscogida.innerHTML = "O";
         //lógico que casillas están marcadas por el jugador X
         Comprobarganador (ArrTablero);
       } else {
@@ -95,7 +99,8 @@ arrCasillas.map((casillaEscogida) => {
         turnosX ++;
         document.getElementById("turnosX").innerHTML = `Turnos de  ${playerX} transcurridos: ${turnosX}`;
         ArrTablero[casillaEscogida.id] = "X";
-        casillaEscogida.innerHTML = "X";
+        casillaEscogida.classList.add("predator");
+        // casillaEscogida.innerHTML = "X";
         Comprobarganador (ArrTablero);
       }
     }

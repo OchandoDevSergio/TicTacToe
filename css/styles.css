@@ -5,10 +5,12 @@ body {
 
     padding: 0;
     margin: 0;
-/* 
-    display: flex;
-    justify-content:center;
-    align-items: center; */
+
+    background-image: url("../img/lucha.jpg");
+    background-size: cover;
+    background-repeat:no-repeat;
+    background-position: center center;
+
 }
 
 #chartcasillas {
@@ -43,18 +45,51 @@ body {
 
     border: 0.5em solid black;
     color: black;
-    background-color: cadetblue;
+    /* background-color: cadetblue; */
+}
+
+.alien {
+    background-image: url("../img/alienicon.jpg");
+    background-size: cover;
+    background-repeat:no-repeat;
+    background-position: center center;
+}
+
+.predator {
+    background-image: url("../img/predatoricon.webp");
+    background-size: cover;
+    background-repeat:no-repeat;
+    background-position: center center;    
 }
 
 .turnos {
     color:black;
 
+    border: 0.2em solid black;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: cornflowerblue;
+}
+
+.contador {
+    height: 10vh;
+    width: 25vw;
+}
+
+.center {
+    height: 5vh;
+    width: 45vw;
+}
+
+.centered {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.green {
-    background-color: green;
-
+.siderows {
+    height: 30vh;
 }
