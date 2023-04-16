@@ -44,10 +44,10 @@ const Comprobarganador = () => {
     let [casilla1, casilla2, casilla3] = victoria;
       if ((ArrTablero[casilla1] == "X") && (ArrTablero[casilla2] == "X") && (ArrTablero[casilla3] =="X")) {
           sessionStorage.setItem("ganador", `Ha ganado ${playerX}`);
-          window.open("../winner.html", "_self");
+          window.open("../winnerpredator.html", "_self");
     } else if ((ArrTablero[casilla1] == "O") && (ArrTablero[casilla2] == "O") && (ArrTablero[casilla3] =="O")) {
           sessionStorage.setItem("ganador", `Ha ganado ${playerO}`);
-          window.open("../winner.html", "_self");
+          window.open("../winneralien.html", "_self");
           finJuego = 1;//sirve para que no finalice directamente la partida tras el tercer turno de O sin asignar el correspondiente ganador  
         } else {
           document.getElementById("asignaganador").innerHTML = "La partida continúa.";
@@ -91,8 +91,6 @@ arrCasillas.map((casillaEscogida) => {
         document.getElementById("turnosO").innerHTML = `Turnos de  ${playerO} transcurridos: ${turnosO}`;//indica los turnos de O que ya han transcurrido
         ArrTablero[casillaEscogida.id] = "O"; //gracias a esta línea indicamos en el tablero 
         casillaEscogida.classList.add("alien");
-        // casillaEscogida.innerHTML = "O";
-        //lógico que casillas están marcadas por el jugador X
         Comprobarganador (ArrTablero);
       } else {
         document.getElementById("asignaturnos").innerHTML = `Es el turno de ${playerO}`;
@@ -100,7 +98,6 @@ arrCasillas.map((casillaEscogida) => {
         document.getElementById("turnosX").innerHTML = `Turnos de  ${playerX} transcurridos: ${turnosX}`;
         ArrTablero[casillaEscogida.id] = "X";
         casillaEscogida.classList.add("predator");
-        // casillaEscogida.innerHTML = "X";
         Comprobarganador (ArrTablero);
       }
     }
