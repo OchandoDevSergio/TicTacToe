@@ -25,8 +25,6 @@ playerO.addEventListener("input", (e)=> {
 
 const goToGame = () => {
 
-
-    console.log(player1, player2, "luisssssssss")
     if(player1 === ""){
         player1 = "Depredador";
     }
@@ -38,10 +36,6 @@ const goToGame = () => {
     sessionStorage.setItem("playerX", JSON.stringify(player1));
     sessionStorage.setItem("playerO", JSON.stringify(player2));
 
-    //we change the god damn screen...
-
     window.open("../game.html", "_self");
-
-
 
 }

@@ -30,3 +30,17 @@ body {
     height: 10vh;
     width: 25vw;
 }
+
+.mainrow {
+    height: 100vh;
+}
+
+#newgame {
+    height: 20vh;
+    width: 30vw;
+
+    background-image: url("../img/newgame.jpg");
+    background-size: cover;
+    background-repeat:no-repeat;
+    background-position: center center;
+}
