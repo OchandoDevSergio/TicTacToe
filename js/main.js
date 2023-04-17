@@ -18,17 +18,10 @@ let jugadasGanadoras = [
   [2, 4, 6],
 ];
 
-
-
 let playerX = JSON.parse(sessionStorage.getItem("playerX"));
-// if (playerX !== String) {
-//   playerX = "Jugador1";
-// }
-// console.log("a ver el player", playerX);
+
 let playerO = JSON.parse(sessionStorage.getItem("playerO"));
-// if (playerO == null) {
-//   playerO = "Jugador2";
-// }
+
 
 document.getElementById("asignaturnos").innerHTML = `Es el turno de ${playerX}`
 document.getElementById("turnosX").innerHTML = `Turnos de  ${playerX} transcurridos: ${turnosX}`;
@@ -54,22 +47,6 @@ const Comprobarganador = () => {
     }
 
   })
-
-  //SISTEMA ALTERNATIVO PARA DETERMINAR EL GANADOR QUE CONSUMIRIA MAS RECURSOS
-
-  // if (((ArrTablero[0]=="X")&&(ArrTablero[1]=="X")&&(ArrTablero[2]=="X"))||((ArrTablero[3]=="X")&&(ArrTablero[4]=="X")&&(ArrTablero[5]=="X"))||((ArrTablero[6]=="X")&&(ArrTablero[7]=="X")&&(ArrTablero[8]=="X"))||((ArrTablero[0]=="X")&&(ArrTablero[4]=="X")&&(ArrTablero[8]=="X"))||((ArrTablero[2]=="X")&&(ArrTablero[4]=="X")&&(ArrTablero[6]=="X"))||((ArrTablero[0]=="X")&&(ArrTablero[3]=="X")&&(ArrTablero[6]=="X"))||((ArrTablero[1]=="X")&&(ArrTablero[4]=="X")&&(ArrTablero[7]=="X"))||((ArrTablero[2]=="X")&&(ArrTablero[5]=="X")&&(ArrTablero[8]=="X"))) {
-  //   sessionStorage.setItem("ganador", `Ha ganado ${JSON.parse(sessionStorage.getItem("playerX"))}`);
-  //   window.open("../winner.html", "_self");
-
-  // } else if (((ArrTablero[0]=="O")&&(ArrTablero[1]=="O")&&(ArrTablero[2]=="O"))||((ArrTablero[3]=="O")&&(ArrTablero[4]=="O")&&(ArrTablero[5]=="O"))||((ArrTablero[6]=="O")&&(ArrTablero[7]=="O")&&(ArrTablero[8]=="O"))||((ArrTablero[0]=="O")&&(ArrTablero[4]=="O")&&(ArrTablero[8]=="O"))||((ArrTablero[2]=="O")&&(ArrTablero[4]=="O")&&(ArrTablero[6]=="O"))||((ArrTablero[0]=="O")&&(ArrTablero[3]=="O")&&(ArrTablero[6]=="O"))||((ArrTablero[1]=="O")&&(ArrTablero[4]=="O")&&(ArrTablero[7]=="O"))||((ArrTablero[2]=="O")&&(ArrTablero[5]=="O")&&(ArrTablero[8]=="O"))) {
-  //   sessionStorage.setItem("ganador", `Ha ganado ${JSON.parse(sessionStorage.getItem("playerO"))}`);
-  //   window.open("../winner.html", "_self");
-  //   finJuego = 1;
-  // } else {
-  //   document.getElementById("asignaganador").innerHTML = "La partida continúa.";
-
-  // }
-
 }
 
 //CAMBIOS QUE SE HAN DE DAR CADA VEZ QUE UN JUGADOR MARCA UNA CASILLA
@@ -107,7 +84,7 @@ arrCasillas.map((casillaEscogida) => {
       document.getElementById("asignaturnos").innerHTML = "Fin del juego";
       document.getElementById("asignaganador").innerHTML = "La partida ha finalizado sin un ganador.";
       sessionStorage.setItem("ganador", "La partida ha finalizado sin un ganador.");
-      window.open("../winner.html", "_self");
+      // window.open("../winner.html", "_self");
       }
     }
     
