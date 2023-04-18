@@ -5,7 +5,7 @@ let numeroClicks = 0;
 let turnosX = 0;
 let turnosO = 0;
 let esTurnoO = true;
-let finJuego = 0;
+let borrador = "A";
 let ArrTablero = ["", "", "", "", "", "", "", "", ""];
 let jugadasGanadoras = [
   [0, 1, 2],
@@ -28,8 +28,6 @@ document.getElementById("turnosX").innerHTML = `Turnos de  ${playerX} transcurri
 document.getElementById("turnosO").innerHTML = `Turnos de  ${playerO} transcurridos: ${turnosO}`;
 
 
-// console.log("PlayerX =", playerX);
-
 // SISTEMA PARA COMPROBAR SI YA HAY UN GANADOR BUSCANDO QUE SE HAYA DADO ALGUNA DE LAS JUGADAS GANADORAS DEL ARRAY
 const Comprobarganador = () => {
 
@@ -41,9 +39,8 @@ const Comprobarganador = () => {
     } else if ((ArrTablero[casilla1] == "O") && (ArrTablero[casilla2] == "O") && (ArrTablero[casilla3] =="O")) {
           sessionStorage.setItem("ganador", `Ha ganado ${playerO}`);
           window.open("../winneralien.html", "_self");
-          finJuego = 1;//sirve para que no finalice directamente la partida tras el tercer turno de O sin asignar el correspondiente ganador  
         } else {
-          document.getElementById("asignaganador").innerHTML = "La partida continúa.";
+          document.getElementById("asignaganador").innerHTML = "Asigna tu ficha.";
     }
 
   })
@@ -53,22 +50,20 @@ const Comprobarganador = () => {
 arrCasillas.map((casillaEscogida) => {
     casillaEscogida.addEventListener("click", () => {
 
-  if (finJuego == 0) {
-
-    if ((casillaEscogida.innerHTML != "X") && (casillaEscogida.innerHTML != "O")) {
+    if (((ArrTablero[casillaEscogida.id] !== "X") && (ArrTablero[casillaEscogida.id] !== "O"))&&(turnosO < 3 )) {
       numeroClicks ++;
       let esTurnoO = (numeroClicks%2 == 0)
         ? true
         : false;
 
-      if (esTurnoO == true) {  //Con este if acumulamos los turnos que han transcurrido de cada jugador
-        //e indicamos por consola el turno actual
+      if (esTurnoO == true) { 
         document.getElementById("asignaturnos").innerHTML = `Es el turno de ${playerX}`;//indica que es el turno de X
         turnosO ++;
         document.getElementById("turnosO").innerHTML = `Turnos de  ${playerO} transcurridos: ${turnosO}`;//indica los turnos de O que ya han transcurrido
         ArrTablero[casillaEscogida.id] = "O"; //gracias a esta línea indicamos en el tablero 
         casillaEscogida.classList.add("alien");
         Comprobarganador (ArrTablero);
+
       } else {
         document.getElementById("asignaturnos").innerHTML = `Es el turno de ${playerO}`;
         turnosX ++;
@@ -77,17 +72,45 @@ arrCasillas.map((casillaEscogida) => {
         casillaEscogida.classList.add("predator");
         Comprobarganador (ArrTablero);
       }
-    }
     
-    if ((turnosO==3)&&(finJuego==0)) {//gracias a este if nos aseguramos de que se finaliza la partida sin un ganador
-      finJuego=1;
-      document.getElementById("asignaturnos").innerHTML = "Fin del juego";
-      document.getElementById("asignaganador").innerHTML = "La partida ha finalizado sin un ganador.";
-      sessionStorage.setItem("ganador", "La partida ha finalizado sin un ganador.");
-      // window.open("../winner.html", "_self");
-      }
-    }
-    
-      });
-  });
+    } else if (turnosO >= 3){//A partir de aquí el juego cambia para poder eliminar una casilla marcada y cambiarla
 
+       esTurnoO = (numeroClicks%2 == 0)
+        ? true
+        : false;
+      
+      document.getElementById("asignaganador").innerHTML = "Elimina una de tus fichas y asigna una nueva.";
+      if (esTurnoO == false) {//el esTurno se invierte a false porque la cláusula (turnosO < 3 ) del if hace que se haya perdido un click
+        if ((ArrTablero[casillaEscogida.id] == "O")&&(borrador=="A")){
+          casillaEscogida.classList.remove("alien");
+          ArrTablero[casillaEscogida.id] = "";
+          borrador="B";
+        } else if (((ArrTablero[casillaEscogida.id] != "X") && (ArrTablero[casillaEscogida.id] != "O"))&&(borrador=="B")) {
+          casillaEscogida.classList.add("alien");
+          borrador="A";
+          ArrTablero[casillaEscogida.id] = "O";
+          document.getElementById("asignaturnos").innerHTML = `Es el turno de ${playerX}`;//indica que es el turno de X
+          turnosO ++;
+          numeroClicks ++;
+          document.getElementById("turnosO").innerHTML = `Turnos de  ${playerO} transcurridos: ${turnosO}`;
+          Comprobarganador (ArrTablero);
+        }  
+      } else { 
+        if ((ArrTablero[casillaEscogida.id] == "X")&&(borrador=="A")){
+        casillaEscogida.classList.remove("predator");
+        ArrTablero[casillaEscogida.id] = "";
+        borrador="B";
+        } else if (((ArrTablero[casillaEscogida.id] != "X") && (ArrTablero[casillaEscogida.id] != "O"))&&(borrador=="B")) {
+          casillaEscogida.classList.add("predator");
+          borrador="A";
+          ArrTablero[casillaEscogida.id] = "X";
+          document.getElementById("asignaturnos").innerHTML = `Es el turno de ${playerO}`;//indica que es el turno de X
+          turnosX ++;
+          numeroClicks ++;
+          document.getElementById("turnosO").innerHTML = `Turnos de  ${playerX} transcurridos: ${turnosO}`;
+          Comprobarganador (ArrTablero);
+        }
+      }
+     }    
+    });
+  });
