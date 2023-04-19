@@ -1,7 +1,7 @@
 
 let conjuntoCasillas = document.getElementsByClassName("casilla");
 let arrCasillas = Array.from(conjuntoCasillas);
-let numeroClicks = 0;
+let numeroClicks = parseInt(Math.random()*10);//Gracias a este Math.random hemos implementado que no siempre empiece la misma facción
 let turnosX = 0;
 let turnosO = 0;
 let esTurnoO = true;
@@ -23,7 +23,13 @@ let playerX = JSON.parse(sessionStorage.getItem("playerX"));
 let playerO = JSON.parse(sessionStorage.getItem("playerO"));
 
 
-document.getElementById("asignaturnos").innerHTML = `Es el turno de ${playerX}`
+// este if sirve para señalar que jugador empieza
+if (numeroClicks%2 == 0) {
+  document.getElementById("asignaturnos").innerHTML = `Es el turno de ${playerX}`
+} else {
+  document.getElementById("asignaturnos").innerHTML = `Es el turno de ${playerO}`
+}
+
 document.getElementById("turnosX").innerHTML = `Turnos de  ${playerX} transcurridos: ${turnosX}`;
 document.getElementById("turnosO").innerHTML = `Turnos de  ${playerO} transcurridos: ${turnosO}`;
 
@@ -50,7 +56,7 @@ const Comprobarganador = () => {
 arrCasillas.map((casillaEscogida) => {
     casillaEscogida.addEventListener("click", () => {
 
-    if (((ArrTablero[casillaEscogida.id] !== "X") && (ArrTablero[casillaEscogida.id] !== "O"))&&(turnosO < 3 )) {
+    if (((ArrTablero[casillaEscogida.id] !== "X") && (ArrTablero[casillaEscogida.id] !== "O"))&&((turnosO+turnosX) < 6 )) {
       numeroClicks ++;
       let esTurnoO = (numeroClicks%2 == 0)
         ? true
@@ -73,14 +79,14 @@ arrCasillas.map((casillaEscogida) => {
         Comprobarganador (ArrTablero);
       }
     
-    } else if (turnosO >= 3){//A partir de aquí el juego cambia para poder eliminar una casilla marcada y cambiarla
+    } else if ((turnosO+turnosX) >= 6){//A partir de aquí el juego cambia para poder eliminar una casilla marcada y cambiarla
 
        esTurnoO = (numeroClicks%2 == 0)
         ? true
         : false;
       
       document.getElementById("asignaganador").innerHTML = "Elimina una de tus fichas y asigna una nueva.";
-      if (esTurnoO == false) {//el esTurno se invierte a false porque la cláusula (turnosO < 3 ) del if hace que se haya perdido un click
+      if (esTurnoO == false) {//el esTurno se invierte a false porque la cláusula del if hace que se haya perdido un click
         if ((ArrTablero[casillaEscogida.id] == "O")&&(borrador=="A")){
           casillaEscogida.classList.remove("alien");
           ArrTablero[casillaEscogida.id] = "";
@@ -107,7 +113,7 @@ arrCasillas.map((casillaEscogida) => {
           document.getElementById("asignaturnos").innerHTML = `Es el turno de ${playerO}`;//indica que es el turno de X
           turnosX ++;
           numeroClicks ++;
-          document.getElementById("turnosO").innerHTML = `Turnos de  ${playerX} transcurridos: ${turnosO}`;
+          document.getElementById("turnosX").innerHTML = `Turnos de  ${playerX} transcurridos: ${turnosX}`;
           Comprobarganador (ArrTablero);
         }
       }
