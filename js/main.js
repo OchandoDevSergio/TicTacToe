@@ -25,9 +25,9 @@ let playerO = JSON.parse(sessionStorage.getItem("playerO"));
 
 // este if sirve para señalar que jugador empieza
 if (numeroClicks%2 == 0) {
-  document.getElementById("asignaturnos").innerHTML = `Es el turno de ${playerX}`
+  document.getElementById("asignaturnos").innerHTML = `Es el turno de ${playerX} ¡empieza la caza!`
 } else {
-  document.getElementById("asignaturnos").innerHTML = `Es el turno de ${playerO}`
+  document.getElementById("asignaturnos").innerHTML = `Es el turno de ${playerO}, protege a tu reina.`
 }
 
 document.getElementById("turnosX").innerHTML = `Turnos de  ${playerX} transcurridos: ${turnosX}`;
