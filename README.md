@@ -3,6 +3,8 @@
 
 # Proyecto: Tic tac toe.
 
+ochandodevsergio.github.io/TicTacToe/
+
 #### Indice 
 
 - [Descripción del proyecto :capital_abcd:](#descripción-del-proyecto)
@@ -40,8 +42,8 @@ Bootstrap
  
    ![](https://i.ibb.co/4mbmCWR/playersttt.jpg)
 
-  En game.html encontramos, además de marcadores que indican de qué jugador es el turno y de cuántos turnos ha dispuesto ya cada jugador, una representación del tablero de juego donde cada jugador marcará sus casillas. 
-  Los marcadores se nombran a cada jugador a través de los nombres que éstos han indicado en players.html, asignando los nombres "depredador" y "alien" en el caso de que se hayan dejado los imputs vacíos en players.html.
+  En game.html encontramos, además de marcadores que indican de qué jugador es el turno (contando con un mecanismo para que sea aleatorio que facción dispone del primer turno) y de cuántos turnos ha dispuesto ya cada jugador, una representación del tablero de juego donde cada jugador marcará sus casillas. 
+  Los marcadores nombran a cada jugador a través de los nombres que éstos han indicado en players.html, asignando los nombres "depredador" y "alien" en el caso de que se hayan dejado los imputs vacíos en players.html.
   El juego tiene una primera fase en la que cada jugador marca una casilla vacía en su turno asignándosela a su facción, pero en caso de no haber un ganador en el momento en que el segundo jugador haya marcado su tercera casilla, se pasaría a una segunda fase de juego. En la segunda fase de juego, cada jugador en su turno primero desmarca una de las casillas ya asignadas a su facción para en ese mismo turno y a continuación marcar cualquier casilla libre a su elección (incluso la que acaba de desmarcar), hasta que finalmente uno de los dos jugadores se declare ganador.
   Con la victoria automáticamente nos vemos conducidos a las páginas winneralien.html o winnerpredator.html.
 
