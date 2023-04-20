@@ -14,15 +14,6 @@ playerO.addEventListener("input", (e)=> {
     player2= e.target.value;
 });
 
-// link.addEventListener("click", ()=>{
-
-//     console.log("hola, yo me ejecuto cuando aprietas el boton ........");
-
-//     sessionStorage.setItem("playerX", JSON.stringify(playerX));
-//     sessionStorage.setItem("playerO", JSON.stringify(playerO));
-// })
-
-
 const goToGame = () => {
 
     if(player1 === ""){
