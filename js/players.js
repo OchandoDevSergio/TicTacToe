@@ -27,6 +27,6 @@ const goToGame = () => {
     sessionStorage.setItem("playerX", JSON.stringify(player1));
     sessionStorage.setItem("playerO", JSON.stringify(player2));
 
-    window.open("./../game.html", "_self");
+    window.open("../pages/game.html", "_self");
 
 }

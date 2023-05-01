@@ -7,6 +7,6 @@ const newGame = () => {
 
     sessionStorage.clear;
 
-    window.open("../players.html", "_self");
+    window.open("../pages/players.html", "_self");
 
 }

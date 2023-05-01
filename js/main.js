@@ -40,10 +40,10 @@ const Comprobarganador = () => {
     let [casilla1, casilla2, casilla3] = victoria;
       if ((ArrTablero[casilla1] == "X") && (ArrTablero[casilla2] == "X") && (ArrTablero[casilla3] =="X")) {
           sessionStorage.setItem("ganador", `Ha ganado ${playerX}`);
-          window.open("../winnerpredator.html", "_self");
+          window.open("../pages/winnerpredator.html", "_self");
     } else if ((ArrTablero[casilla1] == "O") && (ArrTablero[casilla2] == "O") && (ArrTablero[casilla3] =="O")) {
           sessionStorage.setItem("ganador", `Ha ganado ${playerO}`);
-          window.open("../winneralien.html", "_self");
+          window.open("../pages/winneralien.html", "_self");
         } else {
           document.getElementById("asignaganador").innerHTML = "Asigna tu ficha.";
     }
