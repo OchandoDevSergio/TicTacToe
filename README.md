@@ -59,5 +59,5 @@ Las páginas .html no son totalmente responsives en su diseño.
 El link que aparece en la página principal del repositorio en GitHub (ochandodevsergio.github.io/TicTacToe/), conduce a una versión en la que no se enlaza de players.html a game.html y las sucesivas ocasiones en que se ha tratado de subir de nuevo a github pages sucede el mismo error.
 Cuando en el juego se pasa de la primera fase en la que simplemente se marca una casilla, a la segunda en que se desmarca una casilla antes de marcar, hay que dar un click antes de que indique las instrucciones.
 
-Todo ello se tratará de implementar y solucionar en un futuro si se dispone del tiempo necesario.
+Todo ello se tratará de implementar y solucionar en un futuro si se dispone del tiempo necesario para ello.
 
